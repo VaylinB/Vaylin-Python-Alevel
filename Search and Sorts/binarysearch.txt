@@ -1,0 +1,40 @@
+DECLARE Array: ARRAY[0:4] OF INTEGER
+DECLARE Flag, Found :BOOLEAN
+DEDCLARE Value,mid,low,high :INTEGER
+
+Array[0] <- 9
+Array[1] <- 8
+Array[2] <- 7
+Array[3] <- 6
+Array[4] <- 5
+
+Found <- FALSE
+Flag <- TRUE
+low <- 0
+high <- 4
+
+OUTPUT "Enter a Value to find"
+INPUT Value
+WHILE Flag = TRUE DO
+    mid = (high + low) DIV 2
+    IF Array[mid] = Value THEN
+        Found <- TRUE
+        Flag <- FALSE
+    ELSE
+        IF Array[mid] < Value THEN
+            low = mid + 1
+        ELSE
+            high = mid - 1
+        ENDIF
+    ENDIF
+    
+    IF low > high THEN
+        Flag<- FALSE
+    ENDIF
+ENDWHILE
+
+IF Found = TRUE THEN
+    OUTPUT"Item is found"
+ELSE
+    OUTPUT "Item not found!"
+ENDIF

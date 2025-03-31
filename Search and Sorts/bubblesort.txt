@@ -1,0 +1,23 @@
+DECLARE Array : ARRAY[0:4] OF INTEGER
+DECLARE top,temp : INTEGER
+DECLARE swap : BOOLEAN
+swap <- TRUE
+top <- 4
+
+Array[0] <- 9
+Array[1] <- 8
+Array[2] <- 7
+Array[3] <- 6
+Array[4] <- 5
+
+WHILE swap = TRUE DO
+    swap <- FALSE
+    FOR i <- 0 TO top-1
+        IF Array[i] > Array[i+1] THEN
+            temp <- Array[i]
+            Array[i] <- Array[i+1]
+            Array[i+1] <- temp
+            swap <- TRUE
+    NEXT i
+    top <- top - 1
+ENDWHILE

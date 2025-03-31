@@ -1,0 +1,18 @@
+DECLARE Array : ARRAY[0:4] OF INTEGER
+DECLARE Current,i,j : INTEGER
+
+Array[0] <- 9
+Array[1] <- 8
+Array[2] <- 7
+Array[3] <- 6
+Array[4] <- 5
+
+FOR i <- 1 TO 4
+    Current<- Array[i]
+    j <- i-1
+    WHILE j>=0 AND Array[j] > Current DO
+        Array[j+1] <- Array[j]
+        j<- j-1
+    ENDWHILE
+    Array[j+1] <- Current
+NEXT i

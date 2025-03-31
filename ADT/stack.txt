@@ -1,0 +1,25 @@
+DECLARE Stack : ARRAY[0:9] OF INTEGER
+
+StackFull <- 9
+Top <- -1
+
+FUNCTION POP() RETURNS INTEGER
+    IF Top = -1 THEN
+        OUTPUT "Stack is empty"
+        RETURN -1
+    ELSE
+        Value <- Stack[Top]
+        Top <- Top - 1
+        RETURN Value
+    ENDIF
+ENDFUNCTION
+
+PROCEDURE PUSH(Item : INTEGER)
+    IF Top = StackFull THEN
+        OUTPUT "Stack is Full"
+    ELSE
+        Top <-  Top + 1
+        Stack[Top] <-  Item
+    ENDIF
+ENDPROCEDURE
+    

@@ -1,0 +1,18 @@
+TYPE Node
+    DECLARE LeftPointer : INTEGER
+    DECLARE RightPointer : INTEGER
+    DECLARE Data :INTEGER
+ENDTYPE
+
+DECLARE Tree : ARRAY[0:9] OF Node
+DECLARE Rootpointer, HeapPointer,i : INTEGER
+
+Rootpointer <- -1
+HeapPointer < -0
+
+FOR i <- 0 TO 9
+    tree[i].leftpointer <- -1
+    tree[i].rightpointer <- -1
+    tree[i].data <- i + 1
+NEXT i
+tree[9].data <- -1

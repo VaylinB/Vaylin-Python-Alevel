@@ -1,0 +1,99 @@
+1. TYPE Car:
+Purpose:
+
+TYPE is used to define a data structure or a simple template for grouping 
+related attributes (data) together.
+It is more like a record or struct in programming languages like Pascal or C.
+It does not include methods (functions) or behavior—only attributes (data).
+Characteristics:
+
+Focuses only on data (attributes).
+Does not support encapsulation, inheritance, or polymorphism.
+Cannot include methods (functions).
+
+Use Case:
+
+Use TYPE when you only need to store and organize data without any
+ associated behavior (methods).
+
+
+2. CLASS Car:
+Purpose:
+
+CLASS is used to define a blueprint for objects in Object-Oriented Programming (OOP).
+It includes both attributes (data) and methods (functions) that define the behavior of the object.
+It supports OOP principles like encapsulation, inheritance, and polymorphism.
+Characteristics:
+
+Combines data (attributes) and behavior (methods).
+Supports encapsulation (e.g., private attributes with getter and setter methods).
+Can include constructors to initialize objects.
+Can be extended using inheritance.
+
+////////////////////////////////////////////////////////////////////////////////
+
+TYPE Car
+    DECLARE brand : STRING
+    DECLARE year : INTEGER
+    DECLARE colour : STRING
+ENDTYPE
+
+// Create an instance of Car
+DECLARE car1 : Car
+car1.brand <- "Toyota"
+car1.year <- 2002
+car1.colour <- "red"
+
+
+____________________________________________________________________________
+10.1 Methods and Properties
+
+Methods and properties can be assumed to be public unless otherwise stated. Where the access level is
+relevant to the question, it will be explicit in the code using the keywords PUBLIC or PRIVATE.
+
+Example code:
+__________________
+PRIVATE Attempts : INTEGER
+Attempts ← 3
+__________________
+PUBLIC PROCEDURE SetAttempts(Number : INTEGER)
+    Attempts ← Number
+ENDPROCEDURE
+__________________
+PRIVATE FUNCTION GetAttempts() RETURNS INTEGER
+    RETURN Attempts
+ENDFUNCTION
+__________________
+
+Methods will be called using object methods, for example:
+Player.SetAttempts(5)
+OUTPUT Player.GetAttempts()
+
+____________________________________________________________________________
+
+10.2 Constructors and Inheritance
+Constructors will be procedures with the name NEW.
+__________________
+CLASS Pet
+    PRIVATE Name : STRING
+    PUBLIC PROCEDURE NEW(GivenName : STRING)
+        Name ← GivenName
+    ENDPROCEDURE
+ENDCLASS
+__________________
+Inheritance is denoted by the INHERITS keyword; superclass/parent class methods will be called using the
+keyword SUPER, for example:
+__________________
+CLASS Cat INHERITS Pet
+    PRIVATE Breed: INTEGER
+    PUBLIC PROCEDURE NEW(GivenName : STRING, GivenBreed : STRING)
+        SUPER.NEW(GivenName)
+        Breed ← GivenBreed
+    ENDPROCEDURE
+ENDCLASS
+__________________
+To create an object, the following format is used:
+<object name> ← NEW <class name>(<param1>, <param2> ...)
+
+For example:
+MyCat ← NEW Cat("Kitty", "Shorthaired")

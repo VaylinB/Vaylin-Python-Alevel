@@ -1,0 +1,33 @@
+DECLARE Queue : ARRAY[0:4] OF INTEGER
+
+Front <- 0
+Rear <- -1
+Size <- 0
+Queuefull <- 5
+
+PROCEDURE Enqueue(Item : INTEGER)
+    IF Size = Queuefull THEN
+        OUTPUT "Queue is full"
+    ELSE
+        Rear <- Rear + 1
+        Size <- Size + 1
+        IF Rear = Queuefull THEN
+            Rear <- 0
+        ENDIF
+        Queue[Rear] <- Item
+    ENDIF
+ENDPROCEDURE
+
+FUNCTION Dequeue() RETURNS INTEGER
+    IF Size = 0 THEN
+        RETURN -1
+    ELSE    
+        Value <- Queue[Front]
+        Front <- Front + 1
+        Size <- Size - 1
+        IF Front = Queuefull THEN
+            Front <- 0
+        ENDIF
+        RETURN Value 
+    ENDIF
+ENDFUNCTION
